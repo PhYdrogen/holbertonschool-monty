@@ -67,12 +67,24 @@ void print_all(stack_t **stack, unsigned int line_number)
 /**
  * coupage - fonction qui va permettre d'avoir le premier mot
  * @buffer: la ligne
+ * @mot: les mots qui vont être stocker
  * Return: le premier mot
  */
-char *coupage(char *buffer)
+char *coupage(char *buffer, char *mot[])
 {
-	char *ticket = NULL;
+	char *ticket = NULL, *delim = " \r\n";
+	int j = 1;
 
-	ticket = strtok(buffer, " ");
+	ticket = strtok(buffer, delim);
+	if (ticket == NULL)
+		return (0);
+	mot[0] = ticket;
+
+	while (ticket != NULL)
+	{
+		ticket = strtok(NULL, delim);
+		mot[j] = ticket;
+		j++;
+	}
 	return (ticket);
 }
