@@ -86,5 +86,6 @@ char *coupage(char *buffer, char *mot[])
 		mot[j] = ticket;
 		j++;
 	}
+	mot[j] = NULL;
 	return (ticket);
 }

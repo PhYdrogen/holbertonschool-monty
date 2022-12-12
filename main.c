@@ -48,9 +48,16 @@ int main(int ac, char **av)
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
-				printf("HEEE\n");
-				liste[j].f(&head, atoi(mot[1]));
-				break;
+				if (mot[1] != NULL)
+				{
+					printf("HEEE\n");
+					liste[j].f(&head, atoi(mot[1]));
+					break;
+				}
+				else
+				{
+					liste[j].f(&head, 0);
+				}
 			}
 		}
 	}
