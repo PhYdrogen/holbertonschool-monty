@@ -12,7 +12,7 @@ void push(stack_t **stack, _attribute__((unused))unsigned int line_number)
 
 	if (!newNode)
 	{
-		free(newNode);
+		free(stack);
 		exit(EXIT_FAILURE);
 		return;
 	}
