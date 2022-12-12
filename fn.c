@@ -52,20 +52,12 @@ void pop(stack_t **stack, unsigned int line_number)
 /**
  * coupage - fonction qui va permettre d'avoir le premier mot
  * @buffer: la ligne
- * @mot: les mots qui vont etre stocker
  * Return: le premier mot
  */
-char *coupage(char *buffer, char *mot[])
+char *coupage(char *buffer)
 {
-	int k;
 	char *ticket = NULL;
 
 	ticket = strtok(buffer, " ");
-	mot[0] = ticket;
-	for (k = 1; ticket != NULL; k++)
-	{
-		ticket = strtok(NULL, buffer);
-		mot[k] = ticket;
-	}
 	return (ticket);
 }

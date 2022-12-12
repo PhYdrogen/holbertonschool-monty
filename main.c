@@ -38,9 +38,9 @@ int main(int ac, char **av)
 		printf("%s", buffer);
 		for (j = 0; liste[j].opcode; j++)
 		{
-			if (strcmp(coupage(buffer), liste[j].opcode) == 0)
+			if (strcmp(coupage(buffer, mot), liste[j].opcode) == 0)
 			{
-				liste[j].f(&head, mot[1]);
+				liste[j].f(&head, );
 			}
 		}
 	}
