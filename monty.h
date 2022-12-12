@@ -45,4 +45,5 @@ void push(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void print_all(stack_t **stack, unsigned int line_number);
 char *coupage(char *buffer, char *mot[]);
+int strcmp (const char* str1, const char* str2);
 #endif

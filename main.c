@@ -57,6 +57,7 @@ int main(int ac, char **av)
 				else
 				{
 					liste[j].f(&head, 0);
+					break;
 				}
 			}
 		}
