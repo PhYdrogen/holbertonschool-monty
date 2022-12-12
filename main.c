@@ -34,6 +34,9 @@ int main(int ac, char **av)
 	}
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
 	{
+		if (strlen(buffer) < 1)
+			return (1); /* l'utilisateur doit mettre un truc */
+
 		coupage(buffer, mot);
 		if (mot == NULL)
 		{
