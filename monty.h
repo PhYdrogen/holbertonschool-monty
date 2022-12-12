@@ -40,4 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+char *coupage(char *buffer, char *mot[]);
 #endif

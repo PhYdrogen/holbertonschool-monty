@@ -1,18 +1,6 @@
 #include "monty.h"
 
 /**
- * coupage - fonction qui va permettre d'avoir le premier mot
- * @buffer: la ligne
- * Return: le premier mot
- */
-char *coupage(char *buffer)
-{
-	char *ticket = NULL;
-
-	ticket = strtok(buffer, " ");
-	return (ticket);
-}
-/**
  * main - entry point
  * @ac: nm d'arg
  * @av: tableau d'arg
@@ -20,14 +8,17 @@ char *coupage(char *buffer)
  */
 int main(int ac, char **av)
 {
+	FILE *fd = 0;
+	size_t nb = 0, lu = 0;
+	char *buffer = 0, *mot[2];
+	int j = 0;
+
 	instruction_t liste[] = {
 		{"push", push},
 		{"pop", pop},
 		{0, NULL}
 	};
-	FILE *fd = 0;
-	size_t nb = 0, lu = 0;
-	char *buffer = 0;
+	stack_t *head;
 
 	if (ac != 2)
 	{
@@ -47,7 +38,10 @@ int main(int ac, char **av)
 		printf("%s", buffer);
 		for (j = 0; liste[j].opcode; j++)
 		{
-			if(
+			if (strcmp(coupage(buffer), liste[j].opcode) == 0)
+			{
+				liste[j].f(&head, mot[1]);
+			}
 		}
 	}
 	free(buffer);
