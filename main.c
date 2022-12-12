@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#define OP 4
 /**
  * main - entry point
  * @ac: nm d'arg
@@ -10,8 +10,8 @@ int main(int ac, char **av)
 {
 	FILE *fd = 0;
 	size_t nb = 0, lu = 0;
-	char *buffer = 0, *mot[2];
-	int j = 0;
+	char *buffer = 0, *mot[3];
+	int j = 0, res = 0;
 	stack_t *head = NULL;
 
 	instruction_t liste[] = {
@@ -35,9 +35,18 @@ int main(int ac, char **av)
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
 	{
 		coupage(buffer, mot);
-		for (j = 0; j < 4; j++)
+		if (mot == NULL)
 		{
-			if (strcmp(mot[0], liste[j].opcode))
+			return (1);
+		}
+		for (j = 0; j < OP; j++)
+		{
+			/*
+			 * si j == (OP - 1) alors err il doit avoir une
+			 * instruction
+			 */
+			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
+			if (res == 0)
 			{
 				liste[j].f(&head, atoi(mot[1]));
 				break;
