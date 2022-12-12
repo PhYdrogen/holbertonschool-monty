@@ -53,7 +53,6 @@ int main(int ac, char **av)
 			{
 				if (mot[1] != NULL)
 				{
-					printf("HEEE\n");
 					liste[j].f(&head, atoi(mot[1]));
 					break;
 				}

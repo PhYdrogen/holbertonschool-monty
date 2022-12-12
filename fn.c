@@ -56,10 +56,9 @@ void pop(stack_t **stack, unsigned int line_number)
 void print_all(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	printf("work");
 	while (stack)
 	{
-		printf("%i", (*stack)->n);
+		printf("%i\n", (*stack)->n);
 		if ((*stack)->next != NULL)
 		{
 			*stack = (*stack)->next;
