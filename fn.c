@@ -48,7 +48,22 @@ void pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(currentNode);
 }
-
+/**
+ * print_all - print from the start node
+ * @stack: the header
+ * @line_number: for the error
+ */
+void print_all(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+	printf("work");
+	while (stack)
+	{
+		printf("%i", (*stack)->n);
+		if ((*stack)->next != NULL)
+			*stack = (*stack)->next;
+	}
+}
 /**
  * coupage - fonction qui va permettre d'avoir le premier mot
  * @buffer: la ligne
