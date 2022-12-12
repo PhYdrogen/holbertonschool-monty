@@ -61,7 +61,11 @@ void print_all(stack_t **stack, unsigned int line_number)
 	{
 		printf("%i", (*stack)->n);
 		if ((*stack)->next != NULL)
+		{
 			*stack = (*stack)->next;
+		}
+		else
+			return;
 	}
 }
 /**
