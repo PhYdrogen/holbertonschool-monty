@@ -58,7 +58,7 @@ void print_all(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	while (stack)
 	{
-		printf("%i\n", (*stack)->n);
+		fprintf(stdout, "%i\n", (*stack)->n);
 		if ((*stack)->next != NULL)
 		{
 			*stack = (*stack)->next;
@@ -66,6 +66,22 @@ void print_all(stack_t **stack, unsigned int line_number)
 		else
 			return;
 	}
+}
+/**
+ * print_int - print int in top of stack
+ * @stack: the header
+ * @line_number: still don't know
+ */
+void print_int(stack_t **stack, unsigned int line_number)
+{
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L<%u> : can't pint, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+	fprintf(stdout, "%i\n", (*stack)->n);
+
 }
 /**
  * coupage - fonction qui va permettre d'avoir le premier mot

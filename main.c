@@ -18,23 +18,24 @@ int main(int ac, char **av)
 		{"push", push},
 		{"pop", pop},
 		{"pall", print_all},
+		{"pint", print_int},
 		{0, NULL}
 	};
 
 	if (ac != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(av[1], "r");
 	if (fd == NULL)
 	{
-		printf("Error: Can't open file %s", av[1]);
+		fprintf(stderr ,"Error: Can't open file %s", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
 	{
-		if (strlen(buffer) < 1)
+		if (*buffer == '\n')
 			return (1); /* l'utilisateur doit mettre un truc */
 
 		coupage(buffer, mot);
@@ -62,6 +63,10 @@ int main(int ac, char **av)
 					break;
 				}
 			}
+			/*
+			 * si l'utilisateur se trompe de cmd ne pas
+			 * exec et direct sortir
+			 */
 		}
 	}
 	free(buffer);
