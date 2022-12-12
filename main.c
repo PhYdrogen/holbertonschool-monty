@@ -12,6 +12,7 @@ int main(int ac, char **av)
 	size_t nb = 0, lu = 0;
 	char *buffer = 0, *mot[2];
 	int j = 0;
+	stack_t *head = NULL;
 
 	instruction_t liste[] = {
 		{"push", push},
@@ -19,7 +20,6 @@ int main(int ac, char **av)
 		{"pall", print_all},
 		{0, NULL}
 	};
-	stack_t *head;
 
 	if (ac != 2)
 	{
@@ -34,14 +34,13 @@ int main(int ac, char **av)
 	}
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
 	{
-		printf("Retrieved line of length %zu :\n", lu);
-		printf("%s", buffer);
 		coupage(buffer, mot);
-		for (j = 0; liste[j].opcode != NULL; j++)
+		for (j = 0; j < 4; j++)
 		{
 			if (strcmp(mot[0], liste[j].opcode))
 			{
 				liste[j].f(&head, atoi(mot[1]));
+				break;
 			}
 		}
 	}
