@@ -26,6 +26,31 @@ int _isnumber(char *s)
 }
 
 /**
+ * swap - swaps the top two elements of the stack.
+ * @stack: linked list
+ * @line_number: line number
+ *
+ * Return: Nothing.
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tempNode = NULL;
+
+	int tmp = 0;
+
+	if (!stack || !((*stack) -> next))
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+		return;
+	}
+	tempNode = *stack;
+	tmp = tempNode->n;
+	tempNode->n = tmp;
+	tempNode->n = tempNode->next->n;
+	tempNode->next->n = tmp;
+}
+/**
  * _free - libère les noeuds utilisés plus tôt
  * @head: le header
  */
@@ -44,4 +69,5 @@ void _free(stack_t *head)
 	}
 	free(head);
 	free(tmp);
+
 }
