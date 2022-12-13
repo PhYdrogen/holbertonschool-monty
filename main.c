@@ -37,21 +37,20 @@ int main(int ac, char **av)
 	}
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
 	{
-		if (*buffer == '\n')
-			return (1); /* l'utilisateur doit mettre un truc */
-
-		coupage(buffer, mot);
-		if (mot == NULL)
+		if (buffer[0] == '\n')
 		{
-			return (1);
+			ligne++;
+			continue;
 		}
+		coupage(buffer, mot);
 		for (j = 1; j < OP; j++)
 		{
 			if ((j + 1) == OP)
-		{
+			{
 				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
 				exit(EXIT_FAILURE);
 			}
+			printf("ii\n");
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
