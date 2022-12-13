@@ -49,4 +49,5 @@ char *coupage(char *buffer, char *mot[]);
 int strcmp (const char* str1, const char* str2);
 void print_int(stack_t **stack, unsigned int line_number);
 int _isnumber(char *s);
+void _free(stack_t *head);
 #endif

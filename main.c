@@ -68,6 +68,7 @@ int main(int ac, char **av)
 		ligne++;
 	}
 	free(buffer);
+	_free(head);
 	fclose(fd);
 	return (0);
 }
