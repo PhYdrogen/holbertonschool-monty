@@ -60,7 +60,8 @@ void pop(stack_t **stack, unsigned int line_number)
 void print_all(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	while (stack)
+
+	while (*stack != NULL)
 	{
 		fprintf(stdout, "%i\n", (*stack)->n);
 		if ((*stack)->next != NULL)

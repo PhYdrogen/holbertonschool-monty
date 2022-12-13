@@ -49,10 +49,9 @@ int main(int ac, char **av)
 		{
 			if ((j + 1) == OP)
 		{
-				fprintf(stderr, "L%i: unknown instruction %s", ligne, mot[0]);
+				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
 				exit(EXIT_FAILURE);
 			}
-			printf("-- %s - %s --\n", mot[0], liste[j].opcode);
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
