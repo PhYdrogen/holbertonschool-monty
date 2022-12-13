@@ -22,7 +22,13 @@ int _isnumber(char *s)
 	return (0);
 }
 
-
+/**
+ * swap - swaps the top two elements of the stack.
+ * @stack: linked list
+ * @line_number: line number
+ *
+ * Return: Nothing.
+ */
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tempNode = NULL;
