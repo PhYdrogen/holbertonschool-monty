@@ -1,12 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <unistd.h>
 #include <ctype.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,4 +41,10 @@ typedef struct instruction_s
 } instruction_t;
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void print_all(stack_t **stack, unsigned int line_number);
+char *coupage(char *buffer, char *mot[]);
+int strcmp (const char* str1, const char* str2);
+void print_int(stack_t **stack, unsigned int line_number);
 #endif
