@@ -21,3 +21,24 @@ int _isnumber(char *s)
 	}
 	return (0);
 }
+
+/**
+ * _free - libère les noeuds utilisés plus tôt
+ * @head: le header
+ */
+void _free(stack_t *head)
+{
+	stack_t *tmp;
+
+	if (head == NULL)
+		return;
+
+	while (head != NULL)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
+	free(head);
+	free(tmp);
+}
