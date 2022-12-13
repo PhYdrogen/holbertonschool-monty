@@ -42,11 +42,11 @@ void swap(stack_t **stack, unsigned int line_number)
 		return;
 	}
 	tempNode = *stack;
-	temp = tempNode->n;
-	tempNode->n = temp;
+	tmp = tempNode->n;
+	tempNode->n = tmp;
 	tempNode->n = tempNode->next->n;
-	tempNode->next->n = temp;
-
+	tempNode->next->n = tmp;
+}
 /**
  * _free - libère les noeuds utilisés plus tôt
  * @head: le header
