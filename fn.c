@@ -1,4 +1,7 @@
 #include "monty.h"
+
+int n_ext;
+
 /**
  * push - adding element to stack
  * @stack: linked list
@@ -21,7 +24,7 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = newNode;
 	newNode->prev = NULL;
 	newNode->next = *stack;
-	newNode->n = line_number;
+	newNode->n = n_ext;
 	*stack = newNode;
 }
 
@@ -77,7 +80,7 @@ void print_int(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 	{
-		fprintf(stderr, "L<%u> : can't pint, stack empty", line_number);
+		fprintf(stderr, "L%u : can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	fprintf(stdout, "%i\n", (*stack)->n);
@@ -86,7 +89,7 @@ void print_int(stack_t **stack, unsigned int line_number)
 /**
  * coupage - fonction qui va permettre d'avoir le premier mot
  * @buffer: la ligne
- * @mot: les mots qui vont être stocker
+ * @mot: le tableau
  * Return: le premier mot
  */
 char *coupage(char *buffer, char *mot[])
@@ -102,6 +105,9 @@ char *coupage(char *buffer, char *mot[])
 	while (ticket != NULL)
 	{
 		ticket = strtok(NULL, delim);
+		if (_isnumber(ticket) == 0)
+			n_ext = atoi(ticket);
+
 		mot[j] = ticket;
 		j++;
 	}

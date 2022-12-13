@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <string.h>
 
+extern int n_ext;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -47,4 +48,5 @@ void print_all(stack_t **stack, unsigned int line_number);
 char *coupage(char *buffer, char *mot[]);
 int strcmp (const char* str1, const char* str2);
 void print_int(stack_t **stack, unsigned int line_number);
+int _isnumber(char *s);
 #endif
