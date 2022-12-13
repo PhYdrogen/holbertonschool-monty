@@ -1,4 +1,6 @@
 #include "monty.h"
+
+int n_ext = 0;
 /**
  * push - adding element to stack
  * @stack: linked list
@@ -8,6 +10,12 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
+	while (n_ext)
+	if ()
+	{
+		fprintf(stderr, "L%i: usage: push integer", line_number);
+		exit(EXIT_FAILURE);
+	}
 	stack_t *newNode = malloc(sizeof(stack_t));
 
 	if (!newNode)
@@ -21,7 +29,7 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = newNode;
 	newNode->prev = NULL;
 	newNode->next = *stack;
-	newNode->n = line_number;
+	newNode->n = n_ext;
 	*stack = newNode;
 }
 
@@ -102,9 +110,25 @@ char *coupage(char *buffer, char *mot[])
 	while (ticket != NULL)
 	{
 		ticket = strtok(NULL, delim);
-		mot[j] = ticket;
+		if (atoi(ticket) >= 0 && atoi(ticket) <= 9)
+			n_ext = atoi(ticket);
+		else
+			mot[j] = ticket;
 		j++;
 	}
 	mot[j] = NULL;
 	return (ticket);
+}
+
+int _isnumber(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (isdigit(s[i]) == 0)
+			return (0);
+	}
+	return (1);
+}
 }

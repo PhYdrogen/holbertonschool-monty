@@ -1,5 +1,6 @@
 #include "monty.h"
 #define OP 4
+
 /**
  * main - entry point
  * @ac: nm d'arg
@@ -11,7 +12,7 @@ int main(int ac, char **av)
 	FILE *fd = 0;
 	size_t nb = 0, lu = 0;
 	char *buffer = 0, *mot[3];
-	int j = 0, res = 0;
+	int ligne = 1, j = 0, res = 0;
 	stack_t *head = NULL;
 
 	instruction_t liste[] = {
@@ -30,7 +31,7 @@ int main(int ac, char **av)
 	fd = fopen(av[1], "r");
 	if (fd == NULL)
 	{
-		fprintf(stderr ,"Error: Can't open file %s", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while ((lu = getline(&buffer, &nb, fd)) != (size_t) -1)
@@ -49,25 +50,23 @@ int main(int ac, char **av)
 			 * si j == (OP - 1) alors err il doit avoir une
 			 * instruction
 			 */
+			if (liste[j].opcode == 0)
+			{
+				fprintf(stderr, "L%i: unknown instruction %s", ligne, mot[0]);
+				exit(EXIT_FAILURE);
+			}
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
-				if (mot[1] != NULL)
-				{
-					liste[j].f(&head, atoi(mot[1]));
-					break;
-				}
-				else
-				{
-					liste[j].f(&head, 0);
-					break;
-				}
+				liste[j].f(&head, ligne);
+				break;
 			}
 			/*
 			 * si l'utilisateur se trompe de cmd ne pas
 			 * exec et direct sortir
 			 */
 		}
+		ligne++;
 	}
 	free(buffer);
 	fclose(fd);
