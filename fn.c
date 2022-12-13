@@ -11,23 +11,22 @@ int n_ext;
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *newNode = malloc(sizeof(stack_t));
-
 	(void)line_number;
-	if (!newNode)
+	stack_t *newNode = NULL;
+
+	newNode = malloc(sizeof(stack_t));
+	if (newNode == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free(stack);
 		exit(EXIT_FAILURE);
 		return;
 	}
-
-	if (*stack != NULL)
-		(*stack)->prev = newNode;
-
 	newNode->prev = NULL;
 	newNode->next = *stack;
 	newNode->n = n_ext;
+	if (*stack != NULL)
+		(*stack)->prev = newNode;
 	*stack = newNode;
 }
 
@@ -62,13 +61,16 @@ void pop(stack_t **stack, unsigned int line_number)
 void print_all(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
+	stack_t *tmp;
 
-	while (*stack != NULL)
+	tmp = *stack; /* deplace un ptr temporaire*/
+
+	while (tmp != NULL)
 	{
-		fprintf(stdout, "%i\n", (*stack)->n);
-		if ((*stack)->next != NULL)
+		fprintf(stdout, "%i\n", tmp->n);
+		if (tmp->next != NULL)
 		{
-			*stack = (*stack)->next;
+			tmp = tmp->next;
 		}
 		else
 			return;
