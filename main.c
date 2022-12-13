@@ -1,5 +1,5 @@
 #include "monty.h"
-#define OP 6
+#define OP 7
 
 /**
  * main - entry point
@@ -51,6 +51,7 @@ int main(int ac, char **av)
 				exit(EXIT_FAILURE);
 			}
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
+			printf("%d\n", res);
 			if (res == 0)
 			{
 
