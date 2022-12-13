@@ -44,6 +44,11 @@ int main(int ac, char **av)
 			continue;
 		}
 		coupage(buffer, mot);
+		if (**mot == 32)
+		{
+			ligne++;
+			continue;
+		}
 		for (j = 1; j < OP; j++)
 		{
 			if ((j + 1) == OP)
