@@ -38,7 +38,7 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *currentNode = malloc(sizeof(stack_t));
+	stack_t *currentNode = NULL;
 
 	if (*stack == NULL)
 	{
