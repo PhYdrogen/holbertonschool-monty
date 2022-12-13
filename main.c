@@ -1,5 +1,5 @@
 #include "monty.h"
-#define OP 4
+#define OP 5
 
 /**
  * main - entry point
@@ -11,7 +11,7 @@ int main(int ac, char **av)
 {
 	FILE *fd = 0;
 	size_t nb = 0, lu = 0;
-	char *buffer = 0, *mot[3];
+	char *buffer = 0;
 	int ligne = 1, j = 0, res = 0;
 	stack_t *head = NULL;
 
@@ -61,10 +61,6 @@ int main(int ac, char **av)
 				liste[j].f(&head, ligne);
 				break;
 			}
-			/*
-			 * si l'utilisateur se trompe de cmd ne pas
-			 * exec et direct sortir
-			 */
 		}
 		ligne++;
 	}

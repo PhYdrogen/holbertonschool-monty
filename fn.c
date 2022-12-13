@@ -1,6 +1,5 @@
 #include "monty.h"
 
-int n_ext = 0;
 /**
  * push - adding element to stack
  * @stack: linked list
@@ -10,8 +9,9 @@ int n_ext = 0;
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	while (n_ext)
-	if ()
+	int n_ext = 0;
+
+	if (_isnumber(mot[2]) == 1) /* si c'est une lettre*/
 	{
 		fprintf(stderr, "L%i: usage: push integer", line_number);
 		exit(EXIT_FAILURE);
@@ -110,25 +110,11 @@ char *coupage(char *buffer, char *mot[])
 	while (ticket != NULL)
 	{
 		ticket = strtok(NULL, delim);
-		if (atoi(ticket) >= 0 && atoi(ticket) <= 9)
-			n_ext = atoi(ticket);
-		else
-			mot[j] = ticket;
+		mot[j] = ticket;
 		j++;
 	}
 	mot[j] = NULL;
 	return (ticket);
 }
 
-int _isnumber(char *s)
-{
-	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if (isdigit(s[i]) == 0)
-			return (0);
-	}
-	return (1);
-}
-}
