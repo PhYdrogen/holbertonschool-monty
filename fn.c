@@ -100,7 +100,7 @@ void print_int(stack_t **stack, unsigned int line_number)
  */
 char *coupage(char *buffer, char *mot[])
 {
-	char *ticket = NULL, *delim = " \r\n";
+	char *ticket = NULL, *delim = " \t\r\n";
 	int j = 1;
 
 	ticket = strtok(buffer, delim);
