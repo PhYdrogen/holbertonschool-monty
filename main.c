@@ -1,5 +1,5 @@
 #include "monty.h"
-#define OP 6
+#define OP 5
 
 /**
  * main - entry point
@@ -15,8 +15,9 @@ int main(int ac, char **av)
 	int ligne = 1, j = 0, res = 0;
 	stack_t *head = NULL;
 
-	instruction_t liste[] = {{0, NULL}, {"push", push},	{"pop", pop},
-		{"swap", swap},	{"pall", print_all}, {"pint", print_int}, {NULL, NULL}
+	instruction_t liste[] = {{"push", push}, {"pop", pop},
+		{"swap", swap},	{"pall", print_all}, {"pint", print_int},
+		{NULL, NULL}
 	};
 
 	if (ac != 2)
@@ -43,9 +44,9 @@ int main(int ac, char **av)
 			ligne++;
 			continue;
 		}
-		for (j = 1; j < OP; j++)
+		for (j = 0; liste[j].opcode != NULL; j++)
 		{
-			if ((j + 1) == OP)
+			if (liste[j].opcode == NULL)
 			{
 				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
 				exit(EXIT_FAILURE);
