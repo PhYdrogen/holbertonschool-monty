@@ -15,14 +15,8 @@ int main(int ac, char **av)
 	int ligne = 1, j = 0, res = 0;
 	stack_t *head = NULL;
 
-	instruction_t liste[] = {
-		{0, NULL},
-		{"push", push},
-		{"pop", pop},
-		{"swap", swap},
-		{"pall", print_all},
-		{"pint", print_int},
-		{NULL, NULL}
+	instruction_t liste[] = {{0, NULL}, {"push", push},	{"pop", pop},
+		{"swap", swap},	{"pall", print_all}, {"pint", print_int}, {NULL, NULL}
 	};
 
 	if (ac != 2)
