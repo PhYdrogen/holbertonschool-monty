@@ -56,6 +56,12 @@ int main(int ac, char **av)
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
+
+				if (_isnumber(mot[1]) == 1 || mot[1] == NULL) /* si c'est une lettre*/
+				{
+					fprintf(stderr, "L%i: usage: push integer\n", line_number);
+					exit(EXIT_FAILURE);
+				}
 				liste[j].f(&head, ligne);
 				break;
 			}
