@@ -10,10 +10,11 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	int n_ext = 0;
+	char *mot[2];
 
-	if (_isnumber(mot[2]) == 1) /* si c'est une lettre*/
+	if (_isnumber(mot[2]) == 1 || mot[2] == NULL) /* si c'est une lettre*/
 	{
-		fprintf(stderr, "L%i: usage: push integer", line_number);
+		fprintf(stderr, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	stack_t *newNode = malloc(sizeof(stack_t));
@@ -85,7 +86,7 @@ void print_int(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 	{
-		fprintf(stderr, "L<%u> : can't pint, stack empty", line_number);
+		fprintf(stderr, "L%u : can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	fprintf(stdout, "%i\n", (*stack)->n);
@@ -116,5 +117,3 @@ char *coupage(char *buffer, char *mot[])
 	mot[j] = NULL;
 	return (ticket);
 }
-
-
