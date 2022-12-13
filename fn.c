@@ -101,23 +101,23 @@ void print_int(stack_t **stack, unsigned int line_number)
 char *coupage(char *buffer, char *mot[])
 {
 	char *ticket = NULL, *delim = " \t\r\n";
-	int j = 1;
 
 	ticket = strtok(buffer, delim);
 	if (ticket == NULL)
 		return (0);
 	mot[0] = ticket;
 
-	while (ticket != NULL)
+	if (strcmp(mot[0], "pall") == 0)
+	{
+		mot[1] = '\0';
+	}
+	if (strcmp(mot[0], "push") == 0)
 	{
 		ticket = strtok(NULL, delim);
-		if (ticket != NULL)
-			if (_isnumber(ticket) == 0)
-				n_ext = atoi(ticket);
-
-		mot[j] = ticket;
-		j++;
+		mot[1] = ticket;
 	}
-	mot[j] = NULL;
+	if (ticket != NULL)
+		if (_isnumber(ticket) == 0)
+			n_ext = atoi(ticket);
 	return (ticket);
 }
