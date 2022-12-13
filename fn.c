@@ -13,6 +13,7 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newNode = malloc(sizeof(stack_t));
 
+	(void)line_number;
 	if (!newNode)
 	{
 		free(stack);
@@ -59,7 +60,8 @@ void pop(stack_t **stack, unsigned int line_number)
 void print_all(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	while (stack)
+
+	while (*stack != NULL)
 	{
 		fprintf(stdout, "%i\n", (*stack)->n);
 		if ((*stack)->next != NULL)
@@ -105,8 +107,9 @@ char *coupage(char *buffer, char *mot[])
 	while (ticket != NULL)
 	{
 		ticket = strtok(NULL, delim);
-		if (_isnumber(ticket) == 0)
-			n_ext = atoi(ticket);
+		if (ticket != NULL)
+			if (_isnumber(ticket) == 0)
+				n_ext = atoi(ticket);
 
 		mot[j] = ticket;
 		j++;

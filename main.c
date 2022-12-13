@@ -48,18 +48,17 @@ int main(int ac, char **av)
 		for (j = 1; j < OP; j++)
 		{
 			if ((j + 1) == OP)
-			{
-				fprintf(stderr, "L%i: unknown instruction %s", ligne, mot[0]);
+		{
+				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
 				exit(EXIT_FAILURE);
 			}
-			printf("-- %s - %s --\n", mot[0], liste[j].opcode);
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
 
-				if (_isnumber(mot[1]) == 1 || mot[1] == NULL) /* si c'est une lettre*/
+				if (!strcmp(mot[0], "push") && (_isnumber(mot[1]) == 1 || mot[1] == NULL))
 				{
-					fprintf(stderr, "L%i: usage: push integer\n", line_number);
+					fprintf(stderr, "L%i: usage: push integer\n", ligne);
 					exit(EXIT_FAILURE);
 				}
 				liste[j].f(&head, ligne);

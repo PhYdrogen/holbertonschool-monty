@@ -10,6 +10,10 @@ int _isnumber(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
+		if (s[i] == '-')
+		{
+			continue;
+		}
 		if (isdigit(s[i]) == 0)
 		{
 			return (1);
