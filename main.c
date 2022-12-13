@@ -1,5 +1,5 @@
 #include "monty.h"
-#define OP 5
+#define OP 6
 
 /**
  * main - entry point
@@ -19,6 +19,7 @@ int main(int ac, char **av)
 		{0, NULL},
 		{"push", push},
 		{"pop", pop},
+		{"swap", swap},
 		{"pall", print_all},
 		{"pint", print_int},
 		{NULL, NULL}
