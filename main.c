@@ -16,8 +16,8 @@ int main(int ac, char **av)
 	stack_t *head = NULL;
 
 	instruction_t liste[] = {{"push", push}, {"pop", pop},
-		{"swap", swap},	{"pall", print_all}, {"pint", print_int},
-		{NULL, NULL}
+		{"swap", swap},	{"pall", print_all}, {"pint", print_int}, {0, NULL}
+		, {0, NULL}
 	};
 
 	if (ac != 2)
@@ -46,7 +46,7 @@ int main(int ac, char **av)
 		}
 		for (j = 0; liste[j].opcode != NULL; j++)
 		{
-			if (liste[j].opcode == NULL)
+			if (liste[j + 1].opcode == 0)
 			{
 				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
 				exit(EXIT_FAILURE);
