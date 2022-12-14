@@ -71,3 +71,27 @@ void _free(stack_t *head)
 	free(tmp);
 
 }
+/**
+ * adding - additionne deux noeuds
+ * @stack: le header
+ * @line_number: la ligne où on est
+ */
+void adding(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	/* Si le stack est trop leger */
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	/* tmp est le prochain */
+	tmp = (*stack)->next;
+	/* j'ajoute le contenue du noeud du top au 2nd*/
+	tmp->n += (*stack)->n;
+	/* je supprime le top elem */
+	pop(stack, line_number);
+	/* je deplace mon header sur le prochain*/
+	*stack = tmp;
+}
