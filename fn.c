@@ -39,19 +39,20 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *currentNode = NULL;
+	stack_t *tmp = NULL;
 
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free(stack);
 		exit(EXIT_FAILURE);
 	}
-	*stack = currentNode->next;
+	tmp = (*stack);
 
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
-	free(currentNode);
+
+	*stack = (*stack)->next;
+	free(tmp);
 }
 /**
  * print_all - print from the start node
