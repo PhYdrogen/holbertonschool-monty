@@ -45,6 +45,7 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void push(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 void print_all(stack_t **stack, unsigned int line_number);
 char *coupage(char *buffer, char *mot[]);
 int strcmp (const char* str1, const char* str2);
