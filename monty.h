@@ -52,5 +52,6 @@ void print_int(stack_t **stack, unsigned int line_number);
 int _isnumber(char *s);
 void _free(stack_t *head);
 void adding(stack_t **stack, unsigned int line_number);
+void nonmerci(stack_t **stack, unsigned int line_number);
 
 #endif

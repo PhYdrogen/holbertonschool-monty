@@ -95,3 +95,14 @@ void adding(stack_t **stack, unsigned int line_number)
 	/* je deplace mon header sur le prochain*/
 	*stack = tmp;
 }
+/**
+ * nonmerci - ne fait rien
+ * @stack: le header
+ * @line_number: la ligne où on est
+ */
+void nonmerci(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+	sleep(1);
+}
