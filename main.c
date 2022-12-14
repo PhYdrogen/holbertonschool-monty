@@ -46,11 +46,6 @@ int main(int ac, char **av)
 		}
 		for (j = 0; liste[j].opcode != NULL; j++)
 		{
-			if (liste[j + 1].opcode == 0)
-			{
-				fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
-				exit(EXIT_FAILURE);
-			}
 			res = strncmp(mot[0], liste[j].opcode, strlen(mot[0]));
 			if (res == 0)
 			{
@@ -63,6 +58,11 @@ int main(int ac, char **av)
 				liste[j].f(&head, ligne);
 				break;
 			}
+		}
+		if (liste[j].opcode == 0)
+		{
+			fprintf(stderr, "L%i: unknown instruction %s\n", ligne, mot[0]);
+			exit(EXIT_FAILURE);
 		}
 		ligne++;
 	}
