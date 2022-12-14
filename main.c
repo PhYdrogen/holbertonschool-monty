@@ -17,7 +17,7 @@ int main(int ac, char **av)
 
 	instruction_t liste[] = {{"push", push}, {"pop", pop},
 		{"swap", swap},	{"pall", print_all}, {"pint", print_int},
-		{"add", NULL},	{"nop", NULL}, {0, NULL}
+		{"add", adding},	{"nop", NULL}, {0, NULL}
 	};
 
 	if (ac != 2)
