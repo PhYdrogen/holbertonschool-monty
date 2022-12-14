@@ -83,7 +83,7 @@ void adding(stack_t **stack, unsigned int line_number)
 	/* Si le stack est trop leger */
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%i: can't add, stack too short", line_number);
+		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/* tmp est le prochain */
